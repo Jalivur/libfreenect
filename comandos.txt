@@ -1,0 +1,14 @@
+sudo apt update
+sudo apt install git cmake libusb-1.0-0-dev libglfw3-dev libxi-dev
+
+git clone https://github.com/OpenKinect/libfreenect.git
+cd libfreenect
+mkdir build
+cd build
+cmake .. -DBUILD_EXAMPLES=ON
+make -j$(nproc)
+sudo make install
+sudo ldconfig
+
+cd ~/libfreenect/build/bin
+./freenect-glview
